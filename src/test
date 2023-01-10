@@ -1,0 +1,50 @@
+CREATE TABLE students(
+    id SERIAL PRIMARY KEY ,
+    first_name VARCHAR(50)NOT NULL ,
+    last_name VARCHAR(50) NOT NULL ,
+    gender VARCHAR(70) CHECK ( gender='MALE' or  gender='FEMALE' ),
+    email VARCHAR UNIQUE ,
+    course VARCHAR,
+    course_fee NUMERIC,
+    duration INT,
+    date_of_start DATE
+);
+
+insert into students(first_name, last_name, gender, email, course, course_fee, duration, date_of_start)
+VALUES ('Aiperi','Ibraimova','FEMALE','aiperi@gmail.com','Java',8000.500,9,date '2022-9-3'),
+       ('Ilim','Shabdanov','MALE','ilim@gmail.com','Java',12000.00,9,date '2022-9-3'),
+       ('Bayish','Orozaliev','MALE','bayish@gmail.com','JS',6000.500,6,date '2021-10-1'),
+       ('Altynbek','Shakirov','MALE','altynbek@gmail.com','JS',8000.700,9,date '2023-1-1'),
+       ('Kutman','Kaseinov','MALE','kutman@gmail.com','Java',6000,6,date '2021-10-15'),
+       ('Ainazik','Amangeldieva','FEMALE','ainazik@gmail.com','JS',12000.00,9,date '2021-9-3'),
+       ('Lira','Kanaatova','FEMALE','lira@gmail.com','Java',10000.00,9,date '2023-1-1'),
+       ('Nuradil','Zholdoshov','MALE','nuradil@gmail.com','Java',7000.300,6,date '2021-5-1'),
+       ('Kanykei','Askarbekova','FEMALE','kanykei@gmail.com','JS',12000.00,9,date '2021-3-10'),
+       ('Nuriza','Muratova','FEMALE','nuriza@gmail.com','Java',10000.100,3,date '2022-9-3');
+
+
+
+SELECT * FROM students;
+SELECT first_name,last_name,course FROM students;
+SELECT first_name as name from students;
+SELECT first_name, course_fee * students.duration as result from students;
+SELECT concat(last_name,' ',first_name) as full_name FROM students;
+SELECT * FROM students ORDER BY date_of_start;
+SELECT * FROM students ORDER BY course_fee desc ;
+SELECT DISTINCT gender FROM students;
+SELECT  * FROM students WHERE gender='FEMALE';
+SELECT  * FROM students WHERE gender='MALE' AND course='JAVA';
+SELECT * FROM students LIMIT 6;
+SELECT * FROM students OFFSET 4;
+SELECT * FROM students LIMIT 7 OFFSET 5;
+SELECT * FROM students FETCH FIRST 10 ROW ONLY ;
+SELECT * FROM  students where  course_fee in(12000,9000);
+SELECT first_name,last_name,duration FROM students where duration not in(9,3);
+SELECT  * FROM students where  date_of_start between date '2021-1-1' and date '2022-1-1';
+SELECT  * FROM students where first_name like 'A%';
+SELECT * FROM students where first_name ILIKE 'A%';
+SELECT DISTINCT course FROM students;
+SELECT course FROM students group by course ;
+SELECT course,count(*) from  students group by course;
+SELECT course,count(*) from  students group by course having count(*)>5;
+

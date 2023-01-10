@@ -1,0 +1,17 @@
+SELECT CustomerName,City FROM Customers;
+SELECT  DISTINCT Country FROM Customers;
+SELECT COUNT (DISTINCT Country) FROM Customers ;
+SELECT * FROM Customers WHERE Country='Mexico';
+SELECT * FROM Customers WHERE Country='Mexico';
+SELECT * FROM Customers WHERE Country='Mexico';
+SELECT * FrOM Customers WHERE Country='Germany' or Country='Spain';
+SELECT * FROM Customers ORDER BY Country ;
+SELECT * FROM Customers ORDER BY CustomerName desc ;
+SELECT * FROM Customers WHERE Address=NULL;
+SELECT min(Price),* FROM Products
+SELECT COUNT(*) FROM Products;
+SELECT * FROM Customers WHERE CustomerName LIKE 'A%';
+SELECT * FROM Customers WHERE Country='Germany' and Country='France' and Country='Britain'
+SELECT * FROM Customers,Suppliers WHERE Customers.Country=Suppliers.Country
+SELECT * FROM Orders WHERE OrderDate BETWEEN  '1996-01-01' and  '1996-12-31'
+
